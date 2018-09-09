@@ -1,3 +1,3 @@
 class Brewery < ApplicationRecord
-  has_many :Beers
+  has_many :beers
 end
