@@ -16,6 +16,7 @@
 <p>
   <% @brewery.beers.each do |beer| %>
     <%= link_to beer.name, beers_path+"/"+beer.id.to_s %>
+    <!--<%= link_to beer.name+ 2.to_s, beer %>-->
   <% end %>
 </p>
 
