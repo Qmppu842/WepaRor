@@ -14,6 +14,14 @@
   <strong>Brewery:</strong>
   <%= @beer.brewery_id %>
 </p>
+<p>
+<% if @beer.raitings.empty? %>
+asdasd
+<% else %>
+  Has <%= @beer.count_raitings %> raitings, avarage: <%= @beer.avarage_raiting %>
+<% end %>
+
+</p>
 
 <%= link_to 'Edit', edit_beer_path(@beer) %> |
 <%= link_to 'Back', beers_path %>
