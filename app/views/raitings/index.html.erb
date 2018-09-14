@@ -8,8 +8,14 @@
       <% end %>
 </p>
 
+
+
 <ul>
     <% @raitings.each do |raiting| %>
         <li> <%= raiting.to_s %> </li>
     <% end %>
 </ul>
+
+<p>
+  <%= link_to 'Write new raiting', raitings_new_path %>
+</p>
