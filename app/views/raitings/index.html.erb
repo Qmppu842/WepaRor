@@ -12,10 +12,10 @@
 
 <ul>
     <% @raitings.each do |raiting| %>
-        <li> <%= raiting.to_s %> </li>
+        <li> <%= raiting %> <%= link_to 'delete', raiting, method: :delete, data: {confirm:'Are you sure?'} %> </li>
     <% end %>
 </ul>
 
 <p>
-  <%= link_to 'Write new raiting', raitings_new_path %>
+  <%= link_to 'Write new raiting', new_raiting_path %>
 </p>
