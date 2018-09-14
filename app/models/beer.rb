@@ -1,6 +1,6 @@
 class Beer < ApplicationRecord
   belongs_to :brewery
-  has_many :raitings
+  has_many :raitings, dependent: :destroy
 
   def avarage_raiting
     a = 0.0
