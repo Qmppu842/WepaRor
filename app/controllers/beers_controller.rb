@@ -60,6 +60,7 @@ class BeersController < ApplicationController
   # DELETE /beers/1.json
   def destroy
     @beer.destroy
+    Raiting.all.select{ |r| r.beer.nil? }.each{ |r| r.destroy }
     respond_to do |format|
       format.html { redirect_to beers_path, notice: 'Beer was successfully destroyed.' }
       format.json { head :no_content }
