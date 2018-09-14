@@ -55,11 +55,17 @@ class BreweriesController < ApplicationController
   # DELETE /breweries/1
   # DELETE /breweries/1.json
   def destroy
-    @brewery.destroy
-    respond_to do |format|
-      format.html { redirect_to breweries_url, notice: 'Brewery was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    #@brewery.destroy
+    binding.pry
+    #brewery3 = Brewery.find(params[:id])
+    #brewery3.deletedsfsffdsf
+    dsadfasdafaf
+raise
+    #respond_to do |format|
+    #  format.html { redirect_to breweries_path, notice: 'Brewery was successfully destroyed.' }
+    #  format.json { head :no_content }
+    #end
+    redirect_to beers_path
   end
 
   private

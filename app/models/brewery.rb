@@ -1,5 +1,6 @@
 class Brewery < ApplicationRecord
-  has_many :beers
+  has_many :beers, dependent: :destroy
+  has_many :raitings, through: :beers
 
   def print_report
     puts name
