@@ -5,6 +5,7 @@ class RaitingsController < ApplicationController
 
   def new
      @raiting = Raiting.new
+     @beers = Beer.all
   end
 
   def create

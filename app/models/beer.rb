@@ -31,5 +31,9 @@ def count_raitings
   return Raiting.where(beer_id: self.id).count
 end
 
+  def to_s
+    return "#{self.name}, #{self.brewery.name}"
+  end
+
 
 end
