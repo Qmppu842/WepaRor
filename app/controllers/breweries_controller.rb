@@ -11,6 +11,9 @@ class BreweriesController < ApplicationController
   # GET /breweries/1
   # GET /breweries/1.json
   def show
+    #binding.pry
+    #byebug
+    raise
   end
 
   # GET /breweries/new
@@ -52,21 +55,16 @@ class BreweriesController < ApplicationController
     end
   end
 
+
   # DELETE /breweries/1
-  # DELETE /breweries/1.json
-  def destroy
-    #@brewery.destroy
-    binding.pry
-    #brewery3 = Brewery.find(params[:id])
-    #brewery3.deletedsfsffdsf
-    dsadfasdafaf
-raise
-    #respond_to do |format|
-    #  format.html { redirect_to breweries_path, notice: 'Brewery was successfully destroyed.' }
-    #  format.json { head :no_content }
-    #end
-    redirect_to beers_path
-  end
+    # DELETE /breweries/1.json
+    def destroy
+      @brewery.destroy
+      respond_to do |format|
+        format.html { redirect_to breweries_url, notice: 'Brewery was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
