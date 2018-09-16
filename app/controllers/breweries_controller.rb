@@ -1,5 +1,6 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
+  before_action :aunthenticate, only: [:destroy]
 
   # GET /breweries
   # GET /breweries.json
@@ -72,5 +73,18 @@ class BreweriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def brewery_params
       params.require(:brewery).permit(:name, :year)
+    end
+
+    def aunthenticate
+      #raise "Toteuta autentikointi"
+      authenticate_or_request_with_http_basic do |username, password|
+        if username == "admin" and password == "secret"
+          login_ok = true
+        else
+          login_ok = false
+
+        end
+        login_ok
+      end
     end
 end
