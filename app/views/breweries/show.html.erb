@@ -13,12 +13,27 @@
   Number of beers <%= @brewery.beers.count %>
 </p>
 
+
+
 <p>
   <% @brewery.beers.each do |beer| %>
-    <%= link_to beer.name, beers_path+"/"+beer.id.to_s %>
+  <!--  <%= link_to beer.name, beers_path+"/"+beer.id.to_s %> -->
+    <%= link_to beer.name, beer %>
     <!--<%= link_to beer.name+ 2.to_s, beer %>-->
   <% end %>
 </p>
+
+<p>
+</p>
+
+<p>
+  <% if  @brewery.raitings.empty? %>
+    This Brewery is rather poor (or new). So please helpthis website to achieve world domination and rate some beers from this Brewery.
+  <% else %>
+    This brewery's beers have recived combined <%= @brewery.raitings.count %> <%= "raiting".pluralize(@brewery.raitings.count) %> with avarage score of <%= @brewery.average_raiting  %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
 <%= link_to 'Back', breweries_path %>
