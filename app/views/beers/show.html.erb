@@ -18,7 +18,7 @@
 <% if @beer.raitings.empty? %>
 This beer has no reviewes. Thus it is sad :( <br> Please help us and make this poor beer happy!
 <% else %>
-    Has <%= @beer.count_raitings%> <%= "raiting".pluralize(@beer.count_raitings) %>, avarage: <%= @beer.avarage_raiting4 %>
+    Has <%= @beer.count_raitings%> <%= "raiting".pluralize(@beer.count_raitings) %>, avarage: <%= @beer.average_raiting%>
 <% end %>
 
 </p>
