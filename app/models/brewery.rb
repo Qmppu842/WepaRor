@@ -15,7 +15,4 @@ class Brewery < ApplicationRecord
     puts "changed year to #{year}"
   end
 
-  #def average_raitingW
-  #  self.raitings.map{|jotain| jotain.score}.reduce(:+) / self.raitings.count
-  #end
 end
