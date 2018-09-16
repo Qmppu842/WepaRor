@@ -77,15 +77,8 @@ class BreweriesController < ApplicationController
 
     def aunthenticate
       #raise "Toteuta autentikointi"
-      byebug
-
       admin_accounts = {"Kissa" => "kala", "DontHurtMe" =>"NoMore", "Soppa" => "keitto"}
-
-      byebug
-      a=0
       authenticate_or_request_with_http_basic do |username, password|
-        byebug
-        #username == "admin" and password == "secret"
         password == admin_accounts[username]
       end
     end
