@@ -14,6 +14,6 @@ include RaitingAverage
 
   def average
     return 0 if raitings.empty?
-    raitings.map{ &:score }.sum / raitings.count.to_s
+    raitings.map{ :score }.sum / raitings.count.to_s
   end
 end
