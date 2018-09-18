@@ -9,11 +9,12 @@ include RaitingAverage
   end
 
   def to_s
-    "#{self.name}, #{brewery.name}"
+    "#{name}, #{brewery.name}"
   end
 
   def average
     return 0 if raitings.empty?
+
     raitings.map{ :score }.sum / raitings.count.to_s
   end
 end

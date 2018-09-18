@@ -3,7 +3,7 @@ module RaitingAverage
 
 
   def average_raiting
-    raitings.map{ @beer.score}.reduce(:+) / raitings.count.to_f
+    raitings.map{|jotain| jotain.score }.reduce(:+) / raitings.count.to_f
   end
 
 end
