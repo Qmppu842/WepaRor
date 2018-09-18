@@ -2,7 +2,7 @@ class Raiting < ApplicationRecord
   belongs_to :beer
 
   def to_s
-    return "#{Beer.find_by( id: self.beer_id).name } #{self.score}"
+    "#{Beer.find_by(id: beer_id).name} #{score}"
   end
 
 end

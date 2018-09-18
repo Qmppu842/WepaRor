@@ -17,6 +17,8 @@ group :production do
   gem 'rails_12factor'
 end
 
+#gem 'rubocop', '~> 0.59.1', require: false
+
 
 
 # Use Puma as the app server

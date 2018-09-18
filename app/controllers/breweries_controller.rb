@@ -53,33 +53,33 @@ class BreweriesController < ApplicationController
     end
   end
 
-
   # DELETE /breweries/1
-    # DELETE /breweries/1.json
-    def destroy
-      @brewery.destroy
-      respond_to do |format|
-        format.html { redirect_to breweries_url, notice: 'Brewery was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+  # DELETE /breweries/1.json
+  def destroy
+    @brewery.destroy
+    respond_to do |format|
+      format.html { redirect_to breweries_url, notice: 'Brewery was successfully destroyed.' }
+      format.json { head :no_content }
     end
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_brewery
-      @brewery = Brewery.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def brewery_params
-      params.require(:brewery).permit(:name, :year)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_brewery
+    @brewery = Brewery.find(params[:id])
+  end
 
-    def aunthenticate
-      #raise "Toteuta autentikointi"
-      admin_accounts = {"Kissa" => "kala", "DontHurtMe" =>"NoMore", "Soppa" => "keitto"}
-      authenticate_or_request_with_http_basic do |username, password|
-        password == admin_accounts[username]
-      end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def brewery_params
+    params.require(:brewery).permit(:name, :year)
+  end
+
+  def aunthenticate
+    # raise "Toteuta autentikointi"
+    admin_accounts = { "Kissa" => "kala", "DontHurtMe" => "NoMore", "Soppa" => "keitto" }
+    authenticate_or_request_with_http_basic do |username, password|
+      password == admin_accounts[username]
     end
+  end
 end
