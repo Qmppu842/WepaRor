@@ -22,7 +22,7 @@ class RaitingsController < ApplicationController
 
   def destroy
     raiting = Raiting.find(params[:id])
-    raiting.delete
+    raiting.delete if current_user == raiting.user
     redirect_to user_path(current_user)
   end
 

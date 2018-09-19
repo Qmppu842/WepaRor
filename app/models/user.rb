@@ -1,12 +1,12 @@
 class User < ApplicationRecord
   include RaitingAverage
 
-  has_many :raitings
+  has_many :raitings, dependent: :destroy
   has_many :beers, through: :raitings
   has_secure_password
 
   validates :username, uniqueness: true,
-                       length: { minimum:  3, maximum: 60}
+                       length: { minimum: 3, maximum: 60 }
 
   # I did not come up totally with such regex.
   # My regex looked like this at end: [\S*([A-Z]|[{-寃])\S*]{4,}

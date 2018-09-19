@@ -3,9 +3,9 @@ class Beer < ApplicationRecord
 
   belongs_to :brewery
   has_many :raitings, dependent: :destroy
-  has_many :raters, -> { uniq },through: :raitings, source: :user
+  has_many :raters, -> { uniq }, through: :raitings, source: :user
 
-  validates :name, length: { minimum: 1}
+  validates :name, length: { minimum: 1 }
 
   def count_raitings
     Raiting.where(beer_id: id).count
