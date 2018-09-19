@@ -9,10 +9,15 @@ class RaitingsController < ApplicationController
   end
 
   def create
-    raiting = Raiting.create params.require(:raiting).permit(:score, :beer_id)
-    raiting.user = current_user
-    raiting.save
-    redirect_to current_user
+    @raiting = Raiting.create params.require(:raiting).permit(:score, :beer_id)
+    @raiting.user = current_user
+
+    if @raiting.save
+      redirect_to user_path current_user
+    else
+      @beers = Beer.all
+      render :new
+    end
   end
 
   def destroy

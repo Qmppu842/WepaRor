@@ -1,7 +1,26 @@
 <h2> Create new rating</h2>
 
 <%= form_for(@raiting) do |f| %>
-  <%= f.select :beer_id, options_from_collection_for_select(@beers, :id, :to_s) %>
-  score: <%= f.number_field :score, :min => 0, :max => 50, :value => 25 %>
-  <%= f.submit %>
+  <% if @raiting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@raiting.errors.count, 'error') %> prohibited rating from being saved:</h2>
+      <ul>
+        <% @raiting.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field">
+    <%= f.select :beer_id, options_from_collection_for_select(@beers, :id, :to_s) %>
+  </div>
+
+  <div class = "field">
+    <%=f.label "score:" %>
+    <%= f.number_field :score, :min => 1, :max => 50, :value => 25 %>
+  </div>
+  <div class= "actions">
+    <%= f.submit %>
+  </div>
 <% end %>

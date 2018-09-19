@@ -12,10 +12,10 @@
 
 <ul>
     <% @raitings.each do |raiting| %>
-        <li> <%= raiting %> <%= link_to 'delete', raiting, method: :delete, data: {confirm:'Are you sure?'} %> </li>
+        <li> <%= raiting %> <%= link_to raiting.user.username, raiting.user%> </li>
     <% end %>
 </ul>
 
-<p>
-  <%= link_to 'Write new raiting', new_raiting_path %>
-</p>
+<% if !current_user.nil? %>
+  <p><%= link_to 'Write new raiting', new_raiting_path %></p>
+<% end %>

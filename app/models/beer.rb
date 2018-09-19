@@ -4,6 +4,8 @@ class Beer < ApplicationRecord
   belongs_to :brewery
   has_many :raitings, dependent: :destroy
 
+  validates :name, length: { minimum: 1}
+
   def count_raitings
     Raiting.where(beer_id: id).count
   end

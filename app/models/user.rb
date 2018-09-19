@@ -1,4 +1,8 @@
 class User < ApplicationRecord
-  has_many :raitings
   include RaitingAverage
+
+  has_many :raitings
+
+  validates :username, uniqueness: true,
+                       length: { minimum:  3 }
 end
