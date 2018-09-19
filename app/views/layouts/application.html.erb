@@ -14,10 +14,21 @@
       <%= link_to 'breweries', breweries_path %>
       <%= link_to 'beers', beers_path %>
       <%= link_to 'ratings', raitings_path %>
+      <%= link_to 'users', users_path %> |
+
+
+      <% if current_user %>
+      <%= link_to current_user.username, user_path(current_user.id) %>
+      <%= link_to 'rate beers', new_raiting_path %>
+      <%= link_to 'sign out', 'singout', method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% else %>
+      <%= link_to 'sign in', new_session_path %>
+      <%= link_to 'sign up', new_user_path %>
+      <% end %>
     </div>
 
-    <% if not session[:user_id].nil? %>
-    <p><%= User.find(session[:user_id]).username %> singed in </p>
+    <% if current_user %>
+    <p><%= current_user.username %> singed in </p>
     <% end %>
 
     <%= yield %>
