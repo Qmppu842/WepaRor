@@ -28,7 +28,7 @@
 
 <p>
   <% if  @brewery.raitings.empty? %>
-    This Brewery is rather poor (or new). So please helpthis website to achieve world domination and rate some beers from this Brewery.
+    This Brewery is rather poor (or new). So please help this website to achieve world domination and rate some beers from this Brewery.
   <% else %>
     This brewery's beers have recived combined <%= @brewery.raitings.count %> <%= "raiting".pluralize(@brewery.raitings.count) %> with avarage score of <%= @brewery.average_raiting  %>
   <% end %>

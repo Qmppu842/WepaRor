@@ -20,16 +20,12 @@
       <% if current_user %>
       <%= link_to current_user.username, user_path(current_user.id) %>
       <%= link_to 'rate beers', new_raiting_path %>
-      <%= link_to 'sign out', 'singout', method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'sign out', singout_path, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% else %>
       <%= link_to 'sign in', new_session_path %>
       <%= link_to 'sign up', new_user_path %>
       <% end %>
     </div>
-
-    <% if current_user %>
-    <p><%= current_user.username %> singed in </p>
-    <% end %>
 
     <%= yield %>
   </body>

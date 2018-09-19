@@ -1,8 +1,8 @@
 class Raiting < ApplicationRecord
   belongs_to :beer
-
+  belongs_to :user
   def to_s
-    "#{Beer.find_by(id: beer_id).name} #{score}"
+    "#{beer.name} #{score}"
   end
 
 end

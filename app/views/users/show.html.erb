@@ -5,5 +5,22 @@
   <%= @user.username %>
 </p>
 
+
+<% if @user.raitings.count != 0%>
+  <p>This user has given <%= @user.count_and_plural_of_raitings %> with average of <%= @user.average_raiting %></p>
+<% else %>
+  <p>This user has given premission to sell their soul.</p>
+<% end %>
+
+<% if @user.raitings.count != 0%>
+
+  <% @user.raitings.each do |review| %>
+  <p>
+    <%= review %> <%= link_to 'delete', raiting_path %>
+  </p>
+  <% end %>
+
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -10,16 +10,15 @@ class RaitingsController < ApplicationController
 
   def create
     raiting = Raiting.create params.require(:raiting).permit(:score, :beer_id)
-
-    session[:last_raiting] = "#{raiting.beer.name} #{raiting.score} points"
-
-    redirect_to raitings_path
+    raiting.user = current_user
+    raiting.save
+    redirect_to current_user
   end
 
   def destroy
     raiting = Raiting.find(params[:id])
     raiting.delete
-    redirect_to raitings_path
+    redirect_to user_path(current_user)
   end
 
 end
