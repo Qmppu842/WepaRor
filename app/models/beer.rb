@@ -1,11 +1,11 @@
 class Beer < ApplicationRecord
-include RaitingAverage
+  include RaitingAverage
 
   belongs_to :brewery
   has_many :raitings, dependent: :destroy
 
   def count_raitings
-    Raiting.where(beer_id: self.id).count
+    Raiting.where(beer_id: id).count
   end
 
   def to_s

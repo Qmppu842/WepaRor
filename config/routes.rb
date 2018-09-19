@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :users
   resources :beers
   resources :breweries
   resources :raitings, only: [:index, :new, :create, :destroy]
-
+  resource :session, only: [:new, :create, :destroy]
   root 'breweries#index'
 
 
@@ -17,7 +18,10 @@ Rails.application.routes.draw do
   get 'ratings/new', to:'raitings#new'
   #post 'raitings' , to: 'raitings#create'
 
-  
+  # User relaited things
+  get 'singup', to:'username#new'
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

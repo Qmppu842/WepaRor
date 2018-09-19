@@ -9,7 +9,10 @@ class RaitingsController < ApplicationController
   end
 
   def create
-    Raiting.create params.require(:raiting).permit(:score, :beer_id)
+    raiting = Raiting.create params.require(:raiting).permit(:score, :beer_id)
+
+    session[:last_raiting] = "#{raiting.beer.name} #{raiting.score} points"
+
     redirect_to raitings_path
   end
 
