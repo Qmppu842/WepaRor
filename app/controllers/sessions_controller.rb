@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by username: params[:username]
 
-    session[:user_id] = user.id if not user.nil?
+    session[:user_id] = user.id if !user.nil?
 
     redirect_to user_path(user)
   end
