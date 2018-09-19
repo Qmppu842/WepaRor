@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #post 'raitings' , to: 'raitings#create'
 
   # User relaited things
-  get 'singup', to:'username#new'
+  get 'signup', to:'users#new'
 
 
 
