@@ -1,6 +1,18 @@
 <h1>Sing in</h1>
 <p id="notice"><%=notice %></p>
-<%= form_tag session_path do %>
-  <%= text_field_tag :username, params[:username] %>
-  <%= submit_tag "Log in" %>
+  <%= form_tag session_path do %>
+
+  <div class = "field">
+    <%= label_tag "Username: " %>
+    <%= text_field_tag :username, params[:username] %>
+  </div>
+
+  <div class = "field">
+    <%= label_tag "Password: " %>
+    <%= password_field_tag :password, params[:password] %>
+  </div>
+
+  <div class = "actions">
+    <%= submit_tag "Log in" %>
+  </div>
   <% end %>

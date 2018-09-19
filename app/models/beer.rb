@@ -3,6 +3,7 @@ class Beer < ApplicationRecord
 
   belongs_to :brewery
   has_many :raitings, dependent: :destroy
+  has_many :raters, -> { uniq },through: :raitings, source: :user
 
   validates :name, length: { minimum: 1}
 

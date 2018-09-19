@@ -18,7 +18,7 @@ group :production do
 end
 
 #gem 'rubocop', '~> 0.59.1', require: false
-
+gem 'bcrypt', '~> 3.1.7'
 
 
 # Use Puma as the app server
