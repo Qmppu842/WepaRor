@@ -12,6 +12,18 @@
   <p>This user has given premission to sell their soul.</p>
 <% end %>
 
+<p>
+  <% if @user.beer_clubs.any? %>
+    member of
+    <% @user.beer_clubs.each do |club| %>
+      <li> <%= link_to club.name, club %> </li>
+    <% end %>
+  <% end %>
+</p>
+
+
+<h3>ratings</h3>
+
 <% if @user.raitings.count != 0%>
 <ul>
   <% @user.raitings.each do |review| %>
