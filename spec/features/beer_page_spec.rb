@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 include Helpers
-
+# Commit for travis
 describe "Beer" do
   let!(:brewery){ FactoryBot.create :brewery}
   let!(:brewery2){ FactoryBot.create :brewery, name: "Kirahvi"}
