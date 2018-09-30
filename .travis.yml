@@ -6,3 +6,8 @@ rvm:
 script:
 - bundle exec rails db:migrate
 - bundle exec rspec -fd spec
+
+deploy:
+  provider: heroku
+  app: qmppu842-wepa-ror
+  api_key: "2b02c408-84db-4f25-a1bd-1bfd0b0b4756"
