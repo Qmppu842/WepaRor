@@ -10,4 +10,5 @@ script:
 deploy:
   provider: heroku
   app: qmppu842-wepa-ror
-  api_key: "2b02c408-84db-4f25-a1bd-1bfd0b0b4756"
+  api_key:
+    secure: "2a439862-3796-41b4-a630-742a349d05b7"
