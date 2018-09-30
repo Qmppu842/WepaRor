@@ -7,6 +7,9 @@ describe "Beer" do
   let!(:brewery2){ FactoryBot.create :brewery, name: "Kirahvi"}
   let!(:user){FactoryBot.create :user}
 
+  before :each do
+    sign_in(username:"Pekka", password:"Foobar1")
+  end
 
   it "can be added with valid data" do
     visit new_beer_path
