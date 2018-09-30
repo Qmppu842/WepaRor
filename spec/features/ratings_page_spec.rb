@@ -25,4 +25,28 @@ describe "Rating" do
     expect(beer1.raitings.count).to eq(1)
     expect(beer1.average_raiting).to eq(15)
   end
+
+  it "when there is no ratings" do
+    visit raitings_path
+    #save_and_open_page
+    expect(Raiting.count).to eq(0)
+    expect(page).to have_content "Total Amount of raitings 0"
+  end
+
+  it "when there is one rating" do
+    create_beer_with_rating({user: user}, 20)
+    visit raitings_path
+
+    expect(Raiting.count).to eq(1)
+    expect(page).to have_content "Total Amount of raitings"
+  end
+
+  it "when there is many ratings" do
+    create_beers_with_many_ratings({user: user}, 20,30,9,8,2,3,49)
+    visit raitings_path
+
+
+    expect(Raiting.count).to eq(7)
+    expect(page).to have_content "Total Amount of raitings #{7}"
+  end
 end

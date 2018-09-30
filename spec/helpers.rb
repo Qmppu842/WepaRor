@@ -14,7 +14,7 @@ module Helpers
     beer
   end
 
-  def create_beers_with_many_raitings(object, *scores)
+  def create_beers_with_many_ratings(object, *scores)
     scores.each do |score|
       create_beer_with_rating(object, score)
     end
