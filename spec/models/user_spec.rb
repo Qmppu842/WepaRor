@@ -14,9 +14,9 @@ RSpec.describe User, type: :model do
     expect(User.count).to eq(0)
   end
   describe "with a proper password" do
-    let(:user){User.create username:"Pekka", password:"Secret1", password_confirmation:"Secret1"}
-    let(:test_brewery){ Brewery.new name:"test", year: 2000}
-    let(:test_beer){ Beer.create name:"testbeer", style: "testbeer", brewery: test_brewery}
+    let(:user){ FactoryBot.create(:user) }
+    let(:test_brewery){ FactoryBot.create(:brewery)}
+    let(:test_beer){ FactoryBot.create(:beer)}
 
     it "is saved" do
       expect(user).to be_valid
@@ -24,25 +24,22 @@ RSpec.describe User, type: :model do
     end
 
   it " and two raitings, has the correct average raiting" do
-    rating = Raiting.new score:10, beer: test_beer
-    rating2 = Raiting.new score: 20, beer: test_beer
-
-    user.raitings << rating
-    user.raitings << rating2
+    FactoryBot.create(:raiting, score: 10, user: user)
+    FactoryBot.create(:raiting, score: 20, user: user)
 
     expect(user.raitings.count).to eq(2)
     expect(user.average_raiting).to eq(15)
     end
   end
 
-  describe "with password problem is not saved" do
+  describe "is not saved" do
     let(:user){User.new username:"Pekka"}
 
     it "when password and password_confirmation does not match" do
       user.password = "Secret1"
       user.password_confirmation = "salakka"
       user.save
-      
+
       expect(user).not_to be_valid
       expect(User.count).to eq(0)
     end
@@ -71,5 +68,43 @@ RSpec.describe User, type: :model do
         expect(User.count).to eq(0)
 
     end
+  end
+
+  # TDD things
+  describe "favorite beer" do
+    let(:user){ FactoryBot.create(:user) }
+
+    it "has method for determining the favorite_beer" do
+      expect(user).to respond_to(:favorite_beer)
+    end
+
+    it "without ratings does not have a favorite beer" do
+      expect(user.favorite_beer).to eq(nil)
+    end
+
+    it "is the only rated if only one rating" do
+      beer = FactoryBot.create(:beer)
+      rating = FactoryBot.create(:raiting, score: 20,  beer: beer, user: user)
+
+      expect(user.favorite_beer).to eq(beer)
+    end
+    it "is the one with highest rating if several rated" do
+      create_beers_with_many_raitings({user: user}, 10, 20 ,15, 7, 9)
+      best = create_beer_with_rating({user: user}, 25)
+
+      expect(user.favorite_beer).to eq(best)
+    end
+  end
+end
+
+def create_beer_with_rating(object, score)
+  beer = FactoryBot.create(:beer)
+  FactoryBot.create(:raiting, beer: beer, score: score, user: object[:user])
+  beer
+end
+
+def create_beers_with_many_raitings(object, *scores)
+  scores.each do |score|
+    create_beer_with_rating(object, score)
   end
 end

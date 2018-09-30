@@ -13,4 +13,9 @@ class User < ApplicationRecord
   validates :password,
             format: { with: /(?=.*[A-Z])(?=.*\d)[!-寃]{4,}/,
                       message: "must contain one capital letter and number" }
+
+    def favorite_beer
+      return nil if raitings.empty?
+      raitings.order(score: :desc).limit(1).first.beer
+    end
 end
