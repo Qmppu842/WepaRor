@@ -8,18 +8,6 @@ gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 
-group :development, :test do
-  gem 'sqlite3'
-end
-
-group :development, :test do
-  gem 'rspec-rails', '~>3.8'
-end
-
-group :test do
-  gem 'factory_bot_rails'
-  gem 'launchy'
-end
 
 group :production do
   gem 'pg'
@@ -63,6 +51,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
+
+  # Omat
+  gem 'rspec-rails', '~>3.8'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -80,6 +72,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # Omat
+  gem 'factory_bot_rails'
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
