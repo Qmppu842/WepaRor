@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
       expect(user.favorite_beer).to eq(beer)
     end
     it "is the one with highest rating if several rated" do
-      create_beers_with_many_raitings({user: user}, 10, 20 ,15, 7, 9)
+      create_beers_with_many_ratings({user: user}, 10, 20 ,15, 7, 9)
       best = create_beer_with_rating({user: user}, 25)
 
       expect(user.favorite_beer).to eq(best)
