@@ -25,20 +25,20 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
-      @membership = Membership.new(membership_params)
-      @membership.user = current_user
+    @membership = Membership.new(membership_params)
+    @membership.user = current_user
 
-      respond_to do |format|
-        if @membership.save
-          format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
-          format.json { render :show, status: :created, location: @membership }
-        else
-          @clubs = BeerClub.all - current_user.beer_clubs
-          format.html { render :new }
-          format.json { render json: @membership.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @membership.save
+        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
+        format.json { render :show, status: :created, location: @membership }
+      else
+        @clubs = BeerClub.all - current_user.beer_clubs
+        format.html { render :new }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   # PATCH/PUT /memberships/1
   # PATCH/PUT /memberships/1.json
@@ -65,13 +65,14 @@ class MembershipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def membership_params
-      params.require(:membership).permit(:user_id, :beer_club_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_membership
+    @membership = Membership.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def membership_params
+    params.require(:membership).permit(:user_id, :beer_club_id)
+  end
 end
