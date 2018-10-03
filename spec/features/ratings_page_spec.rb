@@ -49,4 +49,18 @@ describe "Rating" do
     expect(Raiting.count).to eq(7)
     expect(page).to have_content "Total Amount of raitings #{7}"
   end
+
+
+
+  it "when user removes a rating, it is deleted from database" do
+  sign_in( username: 'Pekka', password: 'Foobar1')
+  visit user_path(user)
+
+  # etsitään sivun kaikista linkeistä ensimmäinen jonka teksti on delete
+  delete_link = all('a').select{ |l| l.text=='delete' }.first
+
+  expect{
+    delete_link.click
+  }.to change{Raiting.count}.by(-1)
+end
 end

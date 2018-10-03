@@ -8,6 +8,11 @@
 
 <% if @user.raitings.count != 0%>
   <p>This user has given <%= @user.count_and_plural_of_raitings %> with average of <%= @user.average_raiting %></p>
+
+  <p>Favorite beer: <%= @user.favorite_beer.name %></p>
+  <p>Favorite brewery: <%= @user.favorite_brewery.name %></p>
+  <p>Preferred style: <%= @user.favorite_style %></p>
+
 <% else %>
   <p>This user has given premission to sell their soul.</p>
 <% end %>
