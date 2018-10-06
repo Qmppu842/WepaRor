@@ -120,7 +120,7 @@ RSpec.describe User, type: :model do
        create_beers_with_many_ratings({ user: user, style: 'Lager' }, 10, 20, 15, 7, 9)
        create_beers_with_many_ratings({ user: user, style: 'IPA' }, 25, 45 )
        create_beers_with_many_ratings({ user: user, style: 'Alt' }, 50, 10, 8)
-
+       #save_and_open_page
        expect(user.favorite_style).to eq('IPA')
      end
    end

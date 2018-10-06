@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :beer_clubs, through: :memberships
 
   validates :username, uniqueness: true,
-                       length: { minimum: 3}
+                       length: { minimum: 3 }
 
   validates :password,
             format: { with: /(?=.*[A-Z])(?=.*\d)[!-寃]{4,}/,
@@ -20,7 +20,7 @@ class User < ApplicationRecord
     raitings.order(score: :desc).limit(1).first.beer
   end
 
-  #Ymm typos are the best(est)
+  # Ymm typos are the best(est)
   def average_of(raitingss)
     raitingss.sum(&:score).to_f / raitingss.count
   end
@@ -40,8 +40,8 @@ class User < ApplicationRecord
     return nil if raitings.empty?
 
     style_ratings = raitings.group_by{ |r| r.beer.brewery }
-    averages = style_ratings.map do |brewery, ratings|
-      { brewery: brewery, score: average_of(ratings) }
+    averages = style_ratings.map do |brewery, raitings|
+      { brewery: brewery, score: average_of(raitings) }
     end
 
     averages.max_by{ |r| r[:score] }[:brewery]
