@@ -23,6 +23,7 @@
       <% if current_user %>
       <%= link_to current_user.username, user_path(current_user.id) %>
       <%= link_to 'rate beers', new_raiting_path %>
+      <% # TODO: Hide link for joining club if there is no clubs to join/ or replace it with crete new club button %> 
       <%= link_to 'join a club ', new_membership_path %>
       <%= link_to 'sign out', singout_path, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% else %>
