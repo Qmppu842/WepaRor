@@ -17,6 +17,7 @@ end
 #gem 'rubocop', '~> 0.59.1', require: false
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'httparty'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

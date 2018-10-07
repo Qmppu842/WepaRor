@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
   delete 'singout', to: 'sessions#destroy'
 
+  # Places
+  get 'places', to: 'places#index'
+  post 'places', to: 'places#search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
