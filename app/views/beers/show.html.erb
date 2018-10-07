@@ -23,5 +23,16 @@ This beer has no reviewes. Thus it is sad :( <br> Please help us and make this p
 
 </p>
 
-<%= (link_to 'Edit', edit_beer_path(@beer) ) + " |" if current_user %> 
+
+<%if current_user%>
+  <h4> give a rating: </h4>
+
+  <%= form_for(@raiting) do |f| %>
+    <%= f.hidden_field :beer_id %>
+    score: <%= f.number_field :score , :min => 1, :max => 50, :value => 25%>
+    <%= f.submit %>
+<% end %>
+<% end %>
+
+<%= (link_to 'Edit', edit_beer_path(@beer) ) + " |" if current_user %>
 <%= link_to 'Back', beers_path %>
