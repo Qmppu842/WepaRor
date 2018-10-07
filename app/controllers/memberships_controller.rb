@@ -58,9 +58,10 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
+    clubi = @membership.beer_club.name.to_s
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: 'Membership was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user.id), notice: ('You are now longer part of elite ' + clubi) }
       format.json { head :no_content }
     end
   end

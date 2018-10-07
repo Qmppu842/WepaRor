@@ -7,6 +7,10 @@
   <%= submit_tag "Search" %>
 <% end %>
 
+<% if !params[:city].nil? %>
+
+<%= @weather %>
+<% end %>
 
 <% if @places %>
 <% session[:current_city] = @places.first.city %>
