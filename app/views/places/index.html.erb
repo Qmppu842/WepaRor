@@ -9,6 +9,7 @@
 
 
 <% if @places %>
+<% session[:current_city] = @places.first.city %>
   <table>
     <thead>
       <% Place.rendered_fields.each do |field| %>
@@ -16,9 +17,15 @@
       <% end %>
     </thead>
 <% @places.each do |place| %>
+
     <tr>
       <% Place.rendered_fields.each do |field| %>
-        <td><%= place.send(field) %> </td>
+          <% if field == :name %>
+            <td><%=link_to place.name, (places_path() + "/"+ place.id.to_s) %> </td>
+
+          <% else %>
+            <td><%= place.send(field) %> </td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
