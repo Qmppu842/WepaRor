@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :beer_clubs
   resources :users
   resources :beers
-  resources :breweries
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
   resources :raitings, only: [:index, :new, :create, :destroy]
   resource :session, only: [:new, :create, :destroy]
   # Why recources are not working? I got no idea
@@ -35,6 +37,9 @@ Rails.application.routes.draw do
   get 'places', to: 'places#index'
   post 'places', to: 'places#search'
   get 'places/:id', to:'places#show'
+
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
