@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Name:</strong>
@@ -18,7 +18,7 @@
 <% if @beer.raitings.empty? %>
 This beer has no reviewes. Thus it is sad :( <br> Please help us and make this poor beer happy!
 <% else %>
-    Has <%= @beer.count_raitings%> <%= "raiting".pluralize(@beer.count_raitings) %>, avarage: <%= @beer.average_raiting%>
+    Has <%= @beer.count_raitings%> <%= "raiting".pluralize(@beer.count_raitings) %>, avarage: <%= round(@beer.average_raiting)%>
 <% end %>
 
 </p>
@@ -30,9 +30,9 @@ This beer has no reviewes. Thus it is sad :( <br> Please help us and make this p
   <%= form_for(@raiting) do |f| %>
     <%= f.hidden_field :beer_id %>
     score: <%= f.number_field :score , :min => 1, :max => 50, :value => 25%>
-    <%= f.submit %>
+    <%= f.submit class:"btn btn-primary" %>
 <% end %>
 <% end %>
 
-<%= (link_to 'Edit', edit_beer_path(@beer) ) + " |" if current_user %>
+<%= edit_destroy_buttons(@beer) %>
 <%= link_to 'Back', beers_path %>

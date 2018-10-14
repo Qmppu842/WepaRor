@@ -8,8 +8,8 @@ class WeatherApi
     url = "http://api.apixu.com/v1/current.json?key=#{adskey}"
 
     response = HTTParty.get "#{url}&q=#{ERB::Util.url_encode(city)}"
-    #byebug
-    #varavar = "moimoi"
+    # byebug
+    # varavar = "moimoi"
     # weather = response.parsed_response
   end
 

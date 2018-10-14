@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 
 <h2>
@@ -20,7 +20,7 @@
 <% if current_user &&  current_user.memberships.where(beer_club_id: @beer_club.id).count == 0%>
   <%= form_for(@membership) do |f| %>
     <%= f.hidden_field :beer_club_id %>
-    <%= f.submit value:"join the club" %>
+    <%= f.submit value:"join the club", class:"btn btn-primary" %>
   <% end %>
 <% end %>
 
@@ -28,9 +28,9 @@
 
   <%= form_for(@membership, method: "delete")do |f| %>
     <%= f.hidden_field :beer_club_id %>
-    <%= f.submit value:"Leave Club" %>
+    <%= f.submit value:"Leave Club", class:"btn btn-danger"%>
   <% end %>
 <% end %>
 
-<%= (link_to 'Edit', edit_beer_club_path(@beer_club)) + " |" if current_user %>
+<%= edit_destroy_buttons(@beer_club) %>
 <%= link_to 'Back', beer_clubs_path %>

@@ -17,6 +17,9 @@ end
 #gem 'rubocop', '~> 0.59.1', require: false
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
+
 gem 'httparty'
 
 # Use Puma as the app server

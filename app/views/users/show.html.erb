@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Username:</strong>
@@ -7,7 +7,7 @@
 
 
 <% if @user.raitings.count != 0%>
-  <p>This user has given <%= @user.count_and_plural_of_raitings %> with average of <%= @user.average_raiting %></p>
+  <p>This user has given <%= @user.count_and_plural_of_raitings %> with average of <%= round(@user.average_raiting) %></p>
 
   <p>Favorite beer: <%= @user.favorite_beer.name %></p>
   <p>Favorite brewery: <%= @user.favorite_brewery.name %></p>

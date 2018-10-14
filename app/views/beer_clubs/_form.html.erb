@@ -10,23 +10,24 @@
       </ul>
     </div>
   <% end %>
+  <div class="container">
+    <div class="row">
+    <div class="col-sm-2"><%= form.label :name %></div>
+    <div class="col-md-10"><%= form.text_field :name, class:"form-control" %></div>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="row">
+    <div class="col-sm-2"><%= form.label :founded %></div>
+    <div class="col"><%= form.number_field :founded, class:"form-control"%></div>
+    </div>
 
-  <div class="field">
-    <%= form.label :founded %>
-    <%= form.number_field :founded %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+    <div class="row">
+    <div class="col-sm-2"><%= form.label :city %></div>
+    <div class="col"><%= form.text_field :city, class:"form-control"%></div>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary"%>
   </div>
 <% end %>

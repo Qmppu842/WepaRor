@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <h2><%= @brewery.name %></h2>
@@ -30,10 +30,10 @@
   <% if  @brewery.raitings.empty? %>
     This Brewery is rather poor (or new). So please help this website to achieve world domination and rate some beers from this Brewery.
   <% else %>
-    This brewery's beers have recived combined <%= @brewery.raitings.count %> <%= "raiting".pluralize(@brewery.raitings.count) %> with avarage score of <%= @brewery.average_raiting  %>
+    This brewery's beers have recived combined <%= @brewery.raitings.count %> <%= "raiting".pluralize(@brewery.raitings.count) %> with avarage score of <%= round(@brewery.average_raiting)  %>
   <% end %>
 </p>
 
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
+<%= edit_destroy_buttons(@beer) %>
 <%= link_to 'Back', breweries_path %>
