@@ -1,12 +1,17 @@
 
 
-<p>
-  <h2><%= @brewery.name %></h2>
-</p>
+
+<h2>
+  <%= @brewery.name %>
+  <% if not @brewery.active %>
+    <span class="badge badge-info">retired</span>
+  <% end %>
+</h2>
 
 <p>
-  <i>Established at <%= @brewery.year %>
-  </i>
+  <em>
+    Established at <%= @brewery.year %>
+  </em>
 </p>
 
 <p>
@@ -24,9 +29,6 @@
 </p>
 
 <p>
-</p>
-
-<p>
   <% if  @brewery.raitings.empty? %>
     This Brewery is rather poor (or new). So please help this website to achieve world domination and rate some beers from this Brewery.
   <% else %>
@@ -35,5 +37,5 @@
 </p>
 
 
-<%= edit_destroy_buttons(@beer) %>
+<%= edit_destroy_buttons(@brewery) %>
 <%= link_to 'Back', breweries_path %>
