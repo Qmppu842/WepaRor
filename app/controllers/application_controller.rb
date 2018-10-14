@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     redirect_to signin_path, notice: 'you should be singed in' if current_user.nil?
   end
 
+  def is_current_user_admin
+    return self.current_user.admin
+  end
+
 end

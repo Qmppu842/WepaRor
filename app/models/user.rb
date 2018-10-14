@@ -14,6 +14,10 @@ class User < ApplicationRecord
             format: { with: /(?=.*[A-Z])(?=.*\d)[!-寃]{4,}/,
                       message: "must contain one capital letter and number" }
 
+  scope :admins, -> {where admin: true}
+  scope :normal, ->{where admin: [nil, false]}
+
+
   def favorite_beer
     return nil if raitings.empty?
 
