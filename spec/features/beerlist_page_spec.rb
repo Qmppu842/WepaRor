@@ -30,4 +30,6 @@ describe "Beerlist page" do
     find('table').find('tr:nth-child(2)')
     expect(page).to have_content "Nikolai"
   end
+
+
 end
