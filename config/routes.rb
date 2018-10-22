@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #Beer relaited routes
   get 'kaikki_bisset', to: 'beers#index'
-
+  get 'beerlist', to:'beers#list'
 
   #Raitings relaited routes
   #get 'raitings', to: 'raitings#index'
