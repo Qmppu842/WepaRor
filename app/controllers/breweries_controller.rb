@@ -11,7 +11,7 @@ class BreweriesController < ApplicationController
     render :index
   end
 
-  def list     
+  def list
   end
 
   # GET /breweries/1
@@ -70,11 +70,11 @@ class BreweriesController < ApplicationController
 
   def toggle_activity
     brewery = Brewery.find(params[:id])
-    brewery.update_attribute :active, (not brewery.active)
+    brewery.update_attribute :active, !brewery.active
 
     new_status = brewery.active ? "active" : "retired"
 
-    redirect_to brewery, notice:"brewery activity status changed to #{new_status}"
+    redirect_to brewery, notice: "brewery activity status changed to #{new_status}"
   end
 
   private

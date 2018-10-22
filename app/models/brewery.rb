@@ -10,7 +10,7 @@ class Brewery < ApplicationRecord
                                    only_integer: true }
 
   scope :active, ->{ where active: true }
-  scope :retired, ->{ where active: [nil, false]}
+  scope :retired, ->{ where active: [nil, false] }
 
   def print_report
     puts name

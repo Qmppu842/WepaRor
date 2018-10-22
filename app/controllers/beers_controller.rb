@@ -11,14 +11,13 @@ class BeersController < ApplicationController
     order = params[:order] || 'name'
 
     @beers = case order
-      when 'name' then @beers.sort_by{ |b| b.name}
-      when 'brewery' then @beers.sort_by{ |b| b.brewery.name}
-      when 'style' then @beers.sort_by{ |b| b.style}
+             when 'name' then @beers.sort_by(&:name)
+             when 'brewery' then @beers.sort_by{ |b| b.brewery.name }
+             when 'style' then @beers.sort_by(&:style)
     end
   end
 
   def list
-
   end
 
   # GET /beers/1
