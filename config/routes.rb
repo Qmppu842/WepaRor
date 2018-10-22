@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # recources :places, only: [:index, :show]
   root 'breweries#index'
 
+  get 'brewerieslist', to: 'breweries#list'
+  get 'brewerylist', to: 'breweries#list'
+
 
   #Beer relaited routes
   get 'kaikki_bisset', to: 'beers#index'

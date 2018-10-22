@@ -1,6 +1,6 @@
 const BEERS = {}
 
-BEERS.show= () => {
+BEERS.show = () => {
   $("#beertable tr:gt(0)").remove()
   const table = $("#beertable")
   oluet = 200
@@ -8,8 +8,8 @@ BEERS.show= () => {
   BEERS.list.forEach((beer) =>{
     table.append('<tr>'
     +'<td>' + beer['name'] + '</td>'
-      +'<td>' + beer['style'] + '</td>'
-        +'<td>' + beer['brewery']['name'] + '</td>'
+    +'<td>' + beer['style'] + '</td>'
+    +'<td>' + beer['brewery']['name'] + '</td>'
     +'</tr>')
   })
 
@@ -54,6 +54,7 @@ document.addEventListener("turbolinks:load", () => {
   })
 
   $.getJSON('beers.json', (beers) =>{
+    oluen = beers
     BEERS.list = beers
     BEERS.show()
   });
