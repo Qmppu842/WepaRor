@@ -2,12 +2,14 @@ class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit]
   before_action :ensure_that_singed_in, except: [:index, :show, :list]
+  #before_action :expire_stuff, only: [:update, :destroy, :create]
 
   # GET /beers
   # GET /beers.json
   def index
+    return if request.format.html? &&fragment_exist?('beerlist-#{@order}')
     @beers = Beer.includes(:brewery).all
-
+    #@beers = Beer.all
     order = params[:order] || 'name'
 
     @beers = case order
@@ -45,6 +47,7 @@ class BeersController < ApplicationController
   # POST /beers
   # POST /beers.json
   def create
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
     @beer = Beer.new(beer_params)
 
     respond_to do |format|
@@ -64,6 +67,7 @@ class BeersController < ApplicationController
   # PATCH/PUT /beers/1
   # PATCH/PUT /beers/1.json
   def update
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
     respond_to do |format|
       if @beer.update(beer_params)
         format.html { redirect_to @beer, notice: 'Beer was successfully updated.' }
@@ -78,6 +82,7 @@ class BeersController < ApplicationController
   # DELETE /beers/1
   # DELETE /beers/1.json
   def destroy
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
     @beer.destroy
     respond_to do |format|
       format.html { redirect_to beers_path, notice: 'Beer was successfully destroyed.' }
@@ -90,12 +95,19 @@ class BeersController < ApplicationController
     @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Muu juoma"]
   end
 
+
+  def expire_stuff
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_beer
     @beer = Beer.find(params[:id])
   end
+
+
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def beer_params
